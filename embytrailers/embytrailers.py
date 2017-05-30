@@ -1,8 +1,10 @@
 import requests
 import os
 
+from exceptions import EmbytrailersError  # make it relative when cli ready
 
-user_id = '11371ecfed2d4f7495bb965d7b33608d'  # TODO: find user_id (somekind of username hash maybe?)
+
+username = 'oczko'
 app_id = 'a3c5e476bd7b4573808eb3c13462f420'
 host = 'localhost'
 port = 8096
@@ -14,19 +16,7 @@ replace = (
 
 
 buffer_size = 1024 * 1024  # 1 MB
-
-headers = {
-    # 'content-type': 'application/json',
-    # 'Authorization': 'MediaBrowser',
-    'UserId': user_id,
-    # 'Client': 'EmbyTrailers',
-    # 'Device': 'Python Script',
-    # 'DeviceId': 'xxx',
-    # 'Version': '1.0.0.0',
-    'X-MediaBrowser-Token': app_id,
-}
-
-url = 'http://%s:%s/emby/Users/%s/Items' % (host, port, user_id)
+url_base = 'http://%s:%s/emby' % (host, port)
 
 
 def database():
@@ -69,8 +59,31 @@ def download(url, path):
     return True
 
 
+def getUserId(username):
+    # TODO: check password etc.
+    rc = r.get('%s/Users/Public' % url_base).json()
+    for u in rc:
+        if u['Name'].lower() == username.lower():
+            return u['Id']
+    raise EmbytrailersError('User not found.')
+
+
 r = requests.Session()
 db = database()
+
+user_id = getUserId(username)
+headers = {
+    # 'content-type': 'application/json',
+    # 'Authorization': 'MediaBrowser',
+    'UserId': user_id,
+    # 'Client': 'EmbyTrailers',
+    # 'Device': 'Python Script',
+    # 'DeviceId': 'xxx',
+    # 'Version': '1.0.0.0',
+    'X-MediaBrowser-Token': app_id,
+}
+
+url_movies = '%s/Users/%s/Items' % (url_base, user_id)
 r.headers = headers
 
 params = {'IncludeItemTypes': 'Movie',
@@ -78,7 +91,7 @@ params = {'IncludeItemTypes': 'Movie',
           'StartIndex': 0,
           'format': 'json',
           'fields': 'Path,ProviderIds,SortName'}
-movies = r.get(url, params=params).json()
+movies = r.get(url_movies, params=params).json()
 for m in movies['Items']:
     # TODO(?): check 'LocationType' and ommit remote
     if m['LocalTrailerCount'] == 0 and 'OPENWRT' not in m['Path']:  # DEBUG
