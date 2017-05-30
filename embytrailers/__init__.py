@@ -22,3 +22,5 @@ __author__ = 'Piotr Staroszczyk'
 __author_email__ = 'piotr.staroszczyk@get24.org'
 __license__ = 'GNU GPL v3'
 __copyright__ = 'Copyright 2017 Piotr Staroszczyk'
+
+# from . import cli

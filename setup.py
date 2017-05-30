@@ -65,9 +65,9 @@ setup(
         # 'Programming Language :: Python :: Implementation :: IronPython',  # not tested
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
-    # entry_points={
-    #     'console_scripts': [
-    #         'embytrailers = embytrailers.cli:main',
-    #     ]
-    # }
+    entry_points={
+        'console_scripts': [
+            'embytrailers = embytrailers.cli:main',
+        ]
+    }
 )

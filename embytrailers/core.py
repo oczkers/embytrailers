@@ -1,7 +1,17 @@
+# -*- coding: utf-8 -*-
+
+"""
+embytrailers.core
+~~~~~~~~~~~~~~~~~~~~~
+
+This module implements the embytrailers basic methods.
+
+"""
+
 import requests
 import os
 
-from exceptions import EmbytrailersError  # make it relative when cli ready
+from .exceptions import EmbytrailersError
 
 
 username = 'oczko'
