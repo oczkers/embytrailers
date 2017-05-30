@@ -15,7 +15,7 @@ Options:
 
 from docopt import docopt
 
-from . import core
+# from . import core
 
 
 def main():

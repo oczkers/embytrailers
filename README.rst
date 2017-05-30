@@ -29,12 +29,19 @@ Documentation
 Documentation might be available someday at http://embytrailers.readthedocs.org/.
 
 
+Installation
+============
+
+(not working yet)
+
+.. code-block
+    pip install embytrailers
+
 
 Usage
 =====
 
 To be done.
------------
 
 .. code-block:: bash
 
