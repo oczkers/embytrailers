@@ -1,0 +1,14 @@
+docs/_build
+*.pyc
+build/
+dist/
+embytrailers.egg-info/
+.cache/
+.coverage
+coverage.xml
+test.py
+log.log
+embytrailers.log
+test.log
+screenlog.0
+codecov.yml

@@ -1,0 +1,19 @@
+sudo: false
+language: python
+python:
+  # - 2.6
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+  - 3.6
+  - 3.7-dev
+  - pypy
+install:
+ - pip install -r requirements.txt codecov pytest-cov responses
+script:
+ - py.test --verbose --cov-report term --cov-report xml --cov=embytrailers tests
+after_success:
+ - codecov
+notifications:
+  email: oczkers@gmail.com
