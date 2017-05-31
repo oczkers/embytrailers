@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for embytrailers.core"""
+"""Tests for embytrailers.utils"""
 
 import unittest
 # import responses
 
-from embytrailers import core
+from embytrailers import utils
 # from embytrailers.exceptions import EmbytrailersError
 
 
@@ -14,7 +14,7 @@ from embytrailers import core
 #     from codecs import open
 
 
-class EmbytrailersTestCase(unittest.TestCase):
+class EmbytrailersUtilsTestCase(unittest.TestCase):
 
     def setUp(self):
         pass
@@ -23,4 +23,6 @@ class EmbytrailersTestCase(unittest.TestCase):
         pass
 
     def testEntryPoints(self):
-        core.Core
+        utils.download
+
+    # TODO: responses

@@ -67,7 +67,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'embytrailers = embytrailers.cli:main',
+            'embytrailers = embytrailers.cli:__main__',
         ]
     }
 )

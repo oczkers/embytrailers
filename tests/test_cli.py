@@ -23,4 +23,4 @@ class EmbytrailersTestCase(unittest.TestCase):
         pass
 
     def testEntryPoints(self):
-        cli.main
+        cli.__main__
